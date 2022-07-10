@@ -1,0 +1,31 @@
+
+Building vid.boot
+-----------------
+
+- Now the tools can determine on the fly when running on Linux/NeXTStep. 
+- If working in Linux, set in Makefile the PREFIX variable to the correct 
+  value for your cross compiler. If your cross compiler is "m68k-linux-gcc",
+  then your PREFIX should be set to "m68k-linux-". This is not needed
+  when working with NeXTStep, you can leave the PREFIX var to any value.
+- Also, you can setup several debuggin things on the Makefile. I needed that
+  to avoid executing code that could be noisy to debug other things.
+  See the CDEBUGFLAGS and ASMDEBUGFLAGS on the Makefile.
+- To build an image bootable from Network, do a "make net". This will 
+  generate a vid.boot image, then place it where your bootptab needs it.
+- If you have a working NeXTstep (some of us don't have it) and want to
+  build a bootable floppy, the best approach is to do a 'make net' and then
+  use the command 'disk'. A sample command line should be liked to:
+	disk -i -B ./vid.boot /dev/rfd0x
+	where -i means initialize disk, and '-B ./vid.boot' means that
+	vid.boot program must be saved as the boot program. You can omit
+        '-i' if you like.
+- If you're working with Linux, and wish to build an image to be dumped to 
+  a bootable floppy, do a "make floppy". Then, do a 
+  "dd if=vid.boot of=/dev/fd0".
+- As an aditional feature, when working in a Linux box you can do a 
+  "make net-elf". This will generate an elf32-m68k image of vid.boot, able to 
+  be disassembled with Linux tools. Please be aware that (at this moment)
+  you can't do anything (ie booting) but dissasemble that image.
+
+
+Questions: antonio@naiki.com

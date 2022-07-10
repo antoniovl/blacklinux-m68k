@@ -1,0 +1,9 @@
+#!/bin/sh
+# Much shorter version of pvmgetarch
+ARCH=UNKNOWN
+if [ -f /usr/bin/asm56000 ]; then
+	ARCH=NeXT
+else
+	ARCH=LINUX
+fi
+echo $ARCH

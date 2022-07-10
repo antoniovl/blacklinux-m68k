@@ -1,0 +1,51 @@
+
+040998:
+ - Added hgen.
+
+041298:
+ - Moved the machine configuration to a sepparate file (main_setup.c).
+ - console_scroll() rewritten, it now works.
+ - Decided to keep string*() funcions despite NeXT's compiler warnings.
+ - Moved switch from console_putc to console_init (faster char plot).
+
+042098:
+ - Updated Makefile and added config/*.sh to build in either Linux/NeXT.
+ - Asm code standarization (see asm-setup.h).
+ - A copy of simpkern and floppy headers are included. This it's used to
+   build mach-o executables from Linux.
+ - Slight change to simpkern.c to be able to compile in NeXT environment.
+ - Now builds sepparate images to be netbooted and floppy-booted (see 
+  "make net" and "make floppy").
+ - Added an "make net-elf" option, that builds an elf image of vid.boot.
+   This will allow disassembling it when working with Linux boxes.
+ - Code corrections, placing variables outside .h and in correct places.
+
+042198:
+ - The tar file is not built from the Makefile anymore. Now you can execute
+   pack.sh.
+
+042698:
+ - Minor changes to Makefile.
+ - Deleted many unuseful code from main.c
+
+062498:
+ - Now we know where to get the PROM structure.
+ - Added console_get* functions. Now things will be easier.
+ - Slot_id value now is taken from mon_global.
+ - Added CDEBUGFLAGS and ASMDEBUGFLAGS in makefile.
+ - Added console_putnum10() to allow printing of decimal numbers 
+   (*really ugly*, but it works for me).
+ - Fixed some compiler warnings in console.c
+ - Added support to bzip2 into pack.sh.
+
+062598:
+ - Changing foreground/background colors of fonts to white/black revealed
+   several bugs in console_clear(), and I think that it will work even in
+   NeXTdimension Boards.
+ - There is a lot of work to be done with console_plotpixel to allow color
+   plotting. Unfortunately, I only have mono machines. The original
+   algorithm only wanted white/black plots (It worked fine for Randy to
+   debug head.S).
+
+
+

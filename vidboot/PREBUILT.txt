@@ -1,0 +1,28 @@
+
+Prebuilt Images
+---------------
+
+   Unless I forget to build them :-), You'll find 4 prebuilt images.
+   a) To be used with monochome display machines:
+	- vid.boot.mono.net (result of 'make net')
+	- vid.boot.mono.floppy (result of 'make floppy')
+   b) To be used with color display machines
+	- vid.boot.color.net
+	- vid.boot.color.floppy 
+
+   To do a quick start, you can easily dump vid.boot.*.floppy as:
+
+	dd if=./vid.boot.mono.floppy of=/dev/fd0 
+
+   Also, if you have a working NeXTstep, you can do:
+
+	disk -B ./vid.boot.mono.net /dev/rfd0a
+
+   Please be aware that *.floppy are built ready to be dumped 'as is' into the
+floppy, and *.net *must* be written into the floppy's boot block with the
+'disk' utility.
+
+Enjoy.
+Antonio
+antonio@naiki.com
+avarela@next-her.her.itesm.mx
